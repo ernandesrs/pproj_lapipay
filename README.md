@@ -88,7 +88,7 @@ $customer = (new Lapipay())->customer()
 var_dump($customer);
 
 ```
-Se você [fez uso da trait AsCustomerTrait](#faça-uso-da-trait-ascustomertrait), você pode optar por passar apenas uma instância de \App\Models\User no parâmetro $user que os campos serão obtidos a partir dele, veja:
+Se você [fez uso da trait AsCustomerTrait](#faça-uso-da-trait-ascustomertrait), você pode optar por passar apenas a instância de \App\Models\User no parâmetro $user que os campos serão obtidos a partir dele, veja:
 ```php
 
 use Ernandesrs\Lapipay\Services\Lapipay;

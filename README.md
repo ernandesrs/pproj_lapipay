@@ -70,10 +70,10 @@ class User extends Authenticatable
 # USO
 O uso é bastante simples, veja:
 
-### Clientes
+## Clientes
 Ao criar um cliente, os dados do cliente serão salvos na base dados da gateway que gerará um ID para o cliente. Este ID será salvo na sua base dados e então poderá ser utilizado futuramente para facilitar outros processos(transações), bastando passar o ID.
 
-#### Criando cliente
+## Criando cliente
 Passando os dados do cliente manualmente:
 ```php
 

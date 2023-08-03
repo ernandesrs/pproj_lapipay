@@ -23,4 +23,14 @@ class AsCustomer extends Model
         'gateway',
         'customer_id'
     ];
+
+    /**
+     * Get the user associated with the AsCustomer
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function user(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(\App\Models\User::class, 'id', 'user_id');
+    }
 }

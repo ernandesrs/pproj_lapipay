@@ -37,6 +37,10 @@ class Customer
         ?Phone $phone = null,
         ?string $id = null, ?string $name = null, ?string $email = null, ?string $country = null, ?string $type = null
     ) {
+        if ($user->isCustomer()) {
+            return $user->customer()->first();
+        }
+
         $customer = $this->gatewayInstance
             ->createCustomer(
                 $id ?? $user->customerId(),

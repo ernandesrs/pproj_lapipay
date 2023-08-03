@@ -23,6 +23,10 @@ class LapipayServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->publishes([
+            __DIR__ . '/config/lapipay.php' => config_path('lapipay.php'),
+        ], 'lapipay-config');
+
         $this->loadMigrationsFrom(
             __DIR__ . '/database/migrations'
         );

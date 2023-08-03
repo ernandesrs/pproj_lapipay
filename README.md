@@ -47,6 +47,7 @@ return [
 ## Publique o arquivo de configuração
 Na raiz do seu projeto Laravel, publique o arquivo de configuração com o seguinte comando:
 > php artisan vendor:publish --tag=lapipay-config
+
 O arquivo de configuração possui campos que podem ser modificados no arquivo de variáveis <i>.env</i>, veja a seção acima '[Variáveis ambientes](#variáveis-ambiente)'. [Veja o arquivo de configurações](src/config/lapipay.php) para mais detalhes.
 
 ## Faça uso da trait AsCustomerTrait

@@ -1,0 +1,24 @@
+{
+    "name": "ernandesrs/lapipay",
+    "description": "Payment",
+    "type": "metapackage",
+    "require": {
+        "pagarme/pagarme-php": "^4.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ernandesrs\\Lapipay\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Ernandesrs\\Lapipay\\Test": "test/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Ernandes R Souza",
+            "email": "ernandesrsouza@gmail.com"
+        }
+    ]
+}

@@ -33,4 +33,14 @@ class AsCustomer extends Model
     {
         return $this->hasOne(\App\Models\User::class, 'id', 'user_id');
     }
+
+    /**
+     * Customer details from gateway
+     *
+     * @return null|\ArrayObject
+     */
+    public function details()
+    {
+        return (new \Ernandesrs\Lapipay\Services\Lapipay())->customer()->details($this);
+    }
 }

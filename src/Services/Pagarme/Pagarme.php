@@ -63,6 +63,21 @@ class Pagarme
     }
 
     /**
+     * Customer details
+     *
+     * @param string $customerId
+     * @return null|\ArrayObject
+     */
+    public function detailCustomer(string $customerId)
+    {
+        $customer = $this->pagarme->customers()->get([
+            'id' => $customerId
+        ]);
+
+        return $customer->id ?? null ? $customer : null;
+    }
+
+    /**
      * Get api key
      *
      * @return ?string

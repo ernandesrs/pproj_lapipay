@@ -15,4 +15,14 @@ class CustomerController
 
         var_dump($customer);
     }
+
+    public function details()
+    {
+        $user = \App\Models\User::where("id", 2)->first();
+
+        $details = $user->customer()->first()->details();
+        // $details = (new Lapipay())->customer()->details($user->customer()->first());
+
+        var_dump($details);
+    }
 }

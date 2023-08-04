@@ -8,6 +8,7 @@ class Test
 {
     public function __construct()
     {
-        (new CustomerController())->create();
+        // (new CustomerController())->create();
+        (new CustomerController())->details();
     }
 }

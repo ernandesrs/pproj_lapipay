@@ -31,12 +31,8 @@ class Customer
      * @param string|null $type when null, get type from $user
      * @return AsCustomer
      */
-    public function create(
-        \App\Models\User $user,
-        ?Document $document = null,
-        ?Phone $phone = null,
-        ?string $id = null, ?string $name = null, ?string $email = null, ?string $country = null, ?string $type = null
-    ) {
+    public function create(\App\Models\User $user, ?Document $document = null, ?Phone $phone = null, ?string $id = null, ?string $name = null, ?string $email = null, ?string $country = null, ?string $type = null)
+    {
         if ($user->isCustomer()) {
             return $user->customer()->first();
         }
@@ -51,14 +47,21 @@ class Customer
                 $document ?? $user->customerDocument(),
                 $phone ?? $user->customerPhone()
             );
+
         return $customer ? $user->customer()->create([
             'gateway' => config('lapipay.default_gateway'),
             'customer_id' => $customer->customer_id
         ]) : null;
     }
 
-    public function details()
+    /**
+     * Customer details from gateway
+     *
+     * @param AsCustomer $customer
+     * @return null|\ArrayObject
+     */
+    public function details(AsCustomer $customer)
     {
-
+        return $this->gatewayInstance->detailCustomer($customer->customer_id);
     }
 }

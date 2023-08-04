@@ -4,6 +4,7 @@ namespace Ernandesrs\Lapipay\Services;
 
 use \Ernandesrs\Lapipay\Services\Pagarme\Pagarme;
 use \Ernandesrs\Lapipay\Models\Card as CardModel;
+use Ernandesrs\Lapipay\Exceptions\InvalidDataException;
 
 class Card
 {
@@ -25,10 +26,13 @@ class Card
      * @param string $expiration
      * @param string $cvv
      * @return CardModel
+     * @throws InvalidDataException
      */
     public function create(\App\Models\User $user, string $holderName, string $number, string $expiration, string $cvv)
     {
-        $card = $this->gatewayInstance->createCard($holderName, $number, $expiration, $cvv);
+        $validated = \Ernandesrs\Lapipay\Services\Validator::validateCard($holderName, $number, $cvv, $expiration);
+
+        $card = $this->gatewayInstance->createCard($validated['holder_name'], $validated['number'], $validated['expiration'], $validated['cvv']);
 
         return !$card ? null : $user->cards()->firstOrCreate([
             'hash' => $card->card_id,

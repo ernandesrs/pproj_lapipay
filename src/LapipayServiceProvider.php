@@ -30,5 +30,10 @@ class LapipayServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(
             __DIR__ . '/database/migrations'
         );
+
+        $this->loadTranslationsFrom(
+            __DIR__ . '/lang',
+            'lapipay-lang'
+        );
     }
 }

@@ -13,6 +13,6 @@ class Test
 
         (new CardController())->create();
 
-        (new CardController())->cards();
+        // (new CardController())->cards();
     }
 }

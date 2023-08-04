@@ -10,10 +10,15 @@ class CardController
     {
         $user = \App\Models\User::where("id", 2)->first();
 
-        // $card = (new Lapipay())->card()->create($user, $user->customerName(), '5476240809148923', '0326', '779');
-        $card = (new Lapipay())->card()->create($user, $user->customerName(), '4716380053580331', '1029', '918');
+        try {
+            // $card = (new Lapipay())->card()->create($user, $user->customerName(), '5476240809148923', '0326', '779');
+            $card = (new Lapipay())->card()->create($user, $user->customerName(), '14716380053580331', '1029', '918');
 
-        var_dump($card);
+            var_dump($card);
+        } catch (\Ernandesrs\Lapipay\Exceptions\InvalidDataException $e) {
+            var_dump((new Lapipay())->errorMessages());
+        }
+
     }
 
     public function cards()

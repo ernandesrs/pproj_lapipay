@@ -53,4 +53,14 @@ class Lapipay
     {
         return new Card($this->gatewayInstance);
     }
+
+    /**
+     * Get error messages
+     *
+     * @return null|array
+     */
+    public function errorMessages()
+    {
+        return \Ernandesrs\Lapipay\Services\Validator::errorMessages();
+    }
 }

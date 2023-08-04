@@ -9,6 +9,10 @@ class Test
     public function __construct()
     {
         // (new CustomerController())->create();
-        (new CustomerController())->details();
+        // (new CustomerController())->details();
+
+        (new CardController())->create();
+
+        (new CardController())->cards();
     }
 }

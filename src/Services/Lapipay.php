@@ -43,4 +43,14 @@ class Lapipay
     {
         return new Customer($this->gatewayInstance);
     }
+
+    /**
+     * Card
+     *
+     * @return Card
+     */
+    public function card()
+    {
+        return new Card($this->gatewayInstance);
+    }
 }

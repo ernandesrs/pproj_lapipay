@@ -78,6 +78,33 @@ class Pagarme
     }
 
     /**
+     * Create card
+     *
+     * @param string $holderName
+     * @param string $number
+     * @param string $expiration
+     * @param string $cvv
+     * @return null|\ArrayObject
+     */
+    public function createCard(string $holderName, string $number, string $expiration, string $cvv)
+    {
+        $card = $this->pagarme->cards()->create([
+            'holder_name' => $holderName,
+            'number' => $number,
+            'expiration_date' => $expiration,
+            'cvv' => $cvv
+        ]);
+
+        if (!($card->id ?? null)) {
+            return null;
+        }
+
+        $card->card_id = $card->id;
+
+        return $card;
+    }
+
+    /**
      * Get api key
      *
      * @return ?string

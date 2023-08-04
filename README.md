@@ -100,3 +100,29 @@ $customer = (new Lapipay())->customer()
 var_dump($customer);
 
 ```
+
+## Cartões
+Valida e salva um hash seguro do cartão gerado pela gateway na base de dados, isso facilitará cobranças de maneira segura.
+
+## Criando cartão
+Valide e salve um cartão na sua base de dados. O cartão pertencerá ao usuário injetado.
+```php
+
+$user = \App\Models\User::where("id", 1)->first();
+$card = (new Lapipay())->card()
+    ->create($user, $user->customerName(), '4716380053580331', '1029', '918');
+
+var_dump($card);
+
+```
+
+## Obtendo cartões de um cliente
+Obtenha todos os cartões salvos na sua base de dados para o cliente atual.
+```php
+
+$user = \App\Models\User::where("id", 1)->first();
+$cards = $user->cards()->get();
+
+var_dump($cards);
+
+```

@@ -11,8 +11,9 @@ class Test
         // (new CustomerController())->create();
         // (new CustomerController())->details();
 
-        (new CardController())->create();
-
+        // (new CardController())->create();
         // (new CardController())->cards();
+
+        (new PaymentController())->payWithCard();
     }
 }

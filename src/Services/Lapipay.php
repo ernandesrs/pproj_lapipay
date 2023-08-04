@@ -55,6 +55,16 @@ class Lapipay
     }
 
     /**
+     * Payment
+     *
+     * @return Payment
+     */
+    public function payment()
+    {
+        return new Payment($this->gatewayInstance);
+    }
+
+    /**
      * Get error messages
      *
      * @return null|array

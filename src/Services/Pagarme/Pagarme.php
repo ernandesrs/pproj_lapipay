@@ -7,6 +7,8 @@ use Ernandesrs\Lapipay\Models\Phone;
 
 class Pagarme
 {
+    use Payment;
+
     /**
      * Pagarme instance
      *
@@ -114,5 +116,16 @@ class Pagarme
         return config('lapipay.testing') ?
             config('lapipay.gateways.pagarme.test_api_key') :
             config('lapipay.gateways.pagarme.live_api_key');
+    }
+
+    /**
+     * Get
+     *
+     * @param string $key
+     * @return null|mixed
+     */
+    public function __get(string $key)
+    {
+        return $this->$key ?? null;
     }
 }

@@ -3,7 +3,8 @@
 namespace Ernandesrs\Lapipay\Services;
 
 use Ernandesrs\Lapipay\Models\Card;
-use \Ernandesrs\Lapipay\Services\Pagarme\Pagarme;
+use Ernandesrs\Lapipay\Services\Pagarme\Pagarme;
+use Ernandesrs\Lapipay\Exceptions\InvalidDataException;
 
 class Payment
 {
@@ -64,10 +65,14 @@ class Payment
      * @param int $installments
      * @param array $metadata
      * @return null|\Ernandesrs\Lapipay\Models\Payment
+     * @throws InvalidDataException
      */
     public function payWithCard(Card $card, float $amount, int $installments, array $metadata = [])
     {
-        $payment = $this->gatewayInstance->payWithCard($card, $amount, $installments, $metadata);
+        $validated = \Ernandesrs\Lapipay\Services\Validator::validatePayData($amount, $installments);
+
+        $payment = $this->gatewayInstance->payWithCard($card, $validated['amount'], $validated['installments'], $metadata);
+
         return $payment ? $this->gatewayInstance->customer->payments()->create([
             'transaction_id' => $payment->transaction_id,
             'card_id' => $card->id,

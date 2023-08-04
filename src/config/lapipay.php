@@ -19,6 +19,27 @@ return [
 
     /**
      * 
+     * Initial installments
+     * 
+     */
+    'default_installments' => 1,
+
+    /**
+     * 
+     * Minimum number of installments
+     * 
+     */
+    'allowed_min_installments' => 1,
+
+    /**
+     * 
+     * Maximum number of installments
+     * 
+     */
+    'allowed_max_installments' => 10,
+
+    /**
+     * 
      * * * * * * * * * * * * * * * * * * * * * *
      * GATEWAYS CONFIGURATIONS
      * * * * * * * * * * * * * * * * * * * * * *

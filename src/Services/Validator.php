@@ -36,6 +36,40 @@ class Validator
     }
 
     /**
+     * Validate pay data
+     *
+     * @param float $amount
+     * @param integer $installments
+     * @return array validated data
+     * @throws InvalidDataException
+     */
+    public static function validatePayData(float $amount, int $installments)
+    {
+        return self::validate([
+            'amount' => $amount,
+            'installments' => $installments
+        ], [
+            'amount' => ['required', 'numeric'],
+            'installments' => [
+                'required',
+                'integer',
+                'between:' . config('lapipay.allowed_min_installments') . ',' . config('lapipay.allowed_max_installments')
+            ]
+        ], [
+            'amount.decimal' => __('lapipay-lang::lapipay.charge.amount.decimal'),
+
+            'installments.integer' => __('lapipay-lang::lapipay.charge.installments.integer'),
+            'installments.between' => __(
+                'lapipay-lang::lapipay.charge.installments.between',
+                [
+                    'min' => config('lapipay.allowed_min_installments'),
+                    'max' => config('lapipay.allowed_max_installments')
+                ]
+            )
+        ]);
+    }
+
+    /**
      * Validate
      *
      * @param array $data

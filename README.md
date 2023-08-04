@@ -199,3 +199,23 @@ $payment = $pay->payWithCard($card, $amount, $installments, $metadata);
 var_dump($payment);
 
 ```
+
+## Capturando erros de validação
+Alguns campos de um pagamento/cobrança passarão por validação previa. Uma exceção será lançada e um array de erros será armazenado na sessão do usuário, veja como capturar:
+```php
+
+$card = $customer->cards()->first();
+$lapipay = (new \Ernandesrs\Lapipay\Services\Lapipay())->payment()
+    ->addCustomer($customer)
+    ->addBilling($customer)
+    ->addProduct('#8923', 'Product', 10.00, 1, false);
+
+try {
+    $payment = $lapipay->payWithCard($card, 10.00, 1);
+
+    var_dump($payment);
+} catch (\Ernandesrs\Lapipay\Exceptions\InvalidDataException $e) {
+    var_dump((new Lapipay())->errorMessages());
+}
+
+```

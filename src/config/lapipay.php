@@ -26,7 +26,7 @@ return [
      * When null, empty, or testing is set to false, route route('lapipay.postback') will be used.
      * 
      */
-    'postback_url' => env('PAYMENT_POSTBACK_URL', null),
+    'postback_url' => env('PAYMENT_POSTBACK_URL_TEST', null),
 
     /**
      * 

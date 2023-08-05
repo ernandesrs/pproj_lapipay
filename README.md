@@ -73,13 +73,14 @@ O uso é bastante simples, veja:
 ## Clientes
 Ao criar um cliente, os dados do cliente serão salvos na base dados da gateway que gerará um ID para o cliente. Este ID será salvo na sua base dados e então poderá ser utilizado futuramente para facilitar outros processos(transações), bastando passar o ID.
 
-[Documentação](docs/customers.md)
+Documentação | [PT-BR](docs/customers.md)
 
 ## Cartões
 Valida e salva um hash seguro do cartão gerado pela gateway na base de dados, isso facilitará cobranças de maneira segura.
 
-[Documentação](docs/cards.md)
+Documentação | [PT-BR](docs/cards.md)
 
 ## Pagamentos/cobranças
+Todo processo para realização de pagamento/cobrança: adicionar cliente, produtos e efetuação de cobrança/pagamento.
 
-[Documentação](docs/payments.md)
+Documentação | [PT-BR](docs/payments.md)

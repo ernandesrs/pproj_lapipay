@@ -19,6 +19,17 @@ return [
 
     /**
      * 
+     * Postback url for local tests using tools like:
+     * https://requestbin.com/
+     * https://ngrok.com/
+     * 
+     * When null, empty, or testing is set to false, route route('lapipay.postback') will be used.
+     * 
+     */
+    'postback_url' => env('PAYMENT_POSTBACK_URL', null),
+
+    /**
+     * 
      * Initial installments
      * 
      */

@@ -83,4 +83,15 @@ class Payment
             'status' => $payment->status
         ]) : null;
     }
+
+    /**
+     * Postback
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return void
+     */
+    public function postback(\Illuminate\Http\Request $request)
+    {
+        return $this->gatewayInstance->postback($request);
+    }
 }

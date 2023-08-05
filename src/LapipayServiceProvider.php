@@ -35,5 +35,7 @@ class LapipayServiceProvider extends ServiceProvider
             __DIR__ . '/lang',
             'lapipay-lang'
         );
+
+        $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
     }
 }

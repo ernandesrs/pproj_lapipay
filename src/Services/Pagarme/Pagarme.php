@@ -7,7 +7,7 @@ use Ernandesrs\Lapipay\Models\Phone;
 
 class Pagarme
 {
-    use Payment;
+    use Payment, Postback;
 
     /**
      * Pagarme instance

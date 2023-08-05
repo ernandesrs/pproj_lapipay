@@ -73,7 +73,7 @@ trait Payment
         array_push($this->products, [
             'id' => $id,
             'title' => $title,
-            'unit_price' => $unitPrice * 100,
+            'unit_price' => (int) round(($unitPrice * 100), 0),
             'quantity' => $quantity,
             'tangible' => $isTangible
         ]);
@@ -109,9 +109,10 @@ trait Payment
         $this->data = [
             'card_id' => $cardHash,
             'installments' => $installments,
-            'amount' => $amount * 100,
+            'amount' => (int) round(($amount * 100), 0),
             'payment_method' => $method,
-            'metadata' => $metadata
+            'metadata' => $metadata,
+            'postback_url' => $this->postbackUrl()
         ];
 
         $this->antifraudFields($method);

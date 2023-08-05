@@ -25,4 +25,9 @@ class PaymentController
         }
 
     }
+
+    public function postback($request)
+    {
+        (new Lapipay())->payment()->postback($request);
+    }
 }
